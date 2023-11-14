@@ -65,6 +65,8 @@
                                             <option value="Pending">Pending</option>
                                             <option value="Shipped">Shipped</option>
                                             <option value="Completed">Completed</option>
+                                            <option value="PartialShipped">Partial shipped</option>
+                                            <option value="PartialPayement">Partial Payement</option>
                                         </select>
                                     </div>
                                 </div>
@@ -74,10 +76,8 @@
                                             <label for="payment_method">Payment Method <span class="text-danger">*</span></label>
                                             <select class="form-control" name="payment_method" id="payment_method" required>
                                                 <option value="Cash">Cash</option>
-                                                <option value="Credit Card">Credit Card</option>
-                                                <option value="Bank Transfer">Bank Transfer</option>
-                                                <option value="Cheque">Cheque</option>
-                                                <option value="Other">Other</option>
+                                                <option value="Online Shop">Online Shop</option>
+                                                <option value="Online Ilyas">Online Ilyas</option>
                                             </select>
                                         </div>
                                     </div>
