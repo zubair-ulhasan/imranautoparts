@@ -59,7 +59,7 @@ class SalesReturnController extends Controller
                 'status' => $request->status,
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
-                'note' => $request->note,
+                'barcode_scanner' => $request->note,
                 'tax_amount' => Cart::instance('sale_return')->tax() * 100,
                 'discount_amount' => Cart::instance('sale_return')->discount() * 100,
             ]);

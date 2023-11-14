@@ -45,7 +45,7 @@ class QuotationController extends Controller
                 'shipping_amount' => $request->shipping_amount * 100,
                 'total_amount' => $request->total_amount * 100,
                 'status' => $request->status,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('quotation')->tax() * 100,
                 'discount_amount' => Cart::instance('quotation')->discount() * 100,
             ]);
@@ -132,7 +132,7 @@ class QuotationController extends Controller
                 'shipping_amount' => $request->shipping_amount * 100,
                 'total_amount' => $request->total_amount * 100,
                 'status' => $request->status,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('quotation')->tax() * 100,
                 'discount_amount' => Cart::instance('quotation')->discount() * 100,
             ]);

@@ -25,14 +25,14 @@ class ProductController extends Controller
 
     public function create() {
         abort_if(Gate::denies('create_products'), 403);
-
+error_log( "create called");
         return view('product::products.create');
     }
 
 
     public function store(StoreProductRequest $request) {
         $product = Product::create($request->except('document'));
-
+        error_log($product);
         if ($request->has('document')) {
             foreach ($request->input('document', []) as $file) {
                 $product->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('images');

@@ -77,8 +77,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="note">Note</label>
-                                <textarea class="form-control" rows="4" name="note">{{ old('note') }}</textarea>
+                                <label for="barcode_scanner">Barcode Scanner</label>
+                                <textarea class="form-control" rows="4" name="barcode_scanner">{{ old('barcode_scanner') }}</textarea>
                             </div>
 
                             <input type="hidden" value="{{ $sale->id }}" name="sale_id">

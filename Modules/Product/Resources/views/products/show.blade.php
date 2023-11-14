@@ -79,8 +79,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Note</th>
-                                    <td>{{ $product->product_note ?? 'N/A' }}</td>
+                                    <th>Barcode Scanner</th>
+                                    <td>{{ $product->barcode_scanner ?? 'N/A' }}</td>
                                 </tr>
                             </table>
                         </div>

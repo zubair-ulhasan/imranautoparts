@@ -30,7 +30,7 @@ class CreatePurchaseReturnsTable extends Migration
             $table->string('status');
             $table->string('payment_status');
             $table->string('payment_method');
-            $table->text('note')->nullable();
+            $table->text('barcode_scanner')->nullable();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->nullOnDelete();
             $table->timestamps();
         });

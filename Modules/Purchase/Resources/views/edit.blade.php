@@ -85,8 +85,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="note">Note (If Needed)</label>
-                                <textarea name="note" id="note" rows="5" class="form-control">{{ $purchase->note }}</textarea>
+                                <label for="barcode_scanner">Barcode Scanner (If Needed)</label>
+                                <textarea name="barcode_scanner" id="barcode_scanner" rows="5" class="form-control">{{ $purchase->barcode_scanner }}</textarea>
                             </div>
 
                             <div class="mt-3">

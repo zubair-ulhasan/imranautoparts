@@ -26,7 +26,7 @@ class CreateQuotationsTable extends Migration
             $table->integer('shipping_amount')->default(0);
             $table->integer('total_amount');
             $table->string('status');
-            $table->text('note')->nullable();
+            $table->string('barcode_scanner')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers')->nullOnDelete();
             $table->timestamps();
         });

@@ -39,7 +39,7 @@ class SalePaymentsController extends Controller
             'date' => 'required|date',
             'reference' => 'required|string|max:255',
             'amount' => 'required|numeric',
-            'note' => 'nullable|string|max:1000',
+            'barcode_scanner' => 'nullable|string|max:1000',
             'sale_id' => 'required',
             'payment_method' => 'required|string|max:255'
         ]);
@@ -49,7 +49,7 @@ class SalePaymentsController extends Controller
                 'date' => $request->date,
                 'reference' => $request->reference,
                 'amount' => $request->amount,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'sale_id' => $request->sale_id,
                 'payment_method' => $request->payment_method
             ]);
@@ -95,7 +95,7 @@ class SalePaymentsController extends Controller
             'date' => 'required|date',
             'reference' => 'required|string|max:255',
             'amount' => 'required|numeric',
-            'note' => 'nullable|string|max:1000',
+            'barcode_scanner' => 'nullable|string|max:1000',
             'sale_id' => 'required',
             'payment_method' => 'required|string|max:255'
         ]);
@@ -123,7 +123,7 @@ class SalePaymentsController extends Controller
                 'date' => $request->date,
                 'reference' => $request->reference,
                 'amount' => $request->amount,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'sale_id' => $request->sale_id,
                 'payment_method' => $request->payment_method
             ]);

@@ -26,7 +26,7 @@ class UpdateProductRequest extends FormRequest
             'product_stock_alert' => ['required', 'integer', 'min:0'],
             'product_order_tax' => ['nullable', 'integer', 'min:0', 'max:100'],
             'product_tax_type' => ['nullable', 'integer'],
-            'product_note' => ['nullable', 'string', 'max:1000'],
+            'barcode_scanner' => ['nullable', 'string', 'max:1000'],
             'category_id' => ['required', 'integer']
         ];
     }

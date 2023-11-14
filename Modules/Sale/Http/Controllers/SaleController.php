@@ -59,7 +59,7 @@ class SaleController extends Controller
                 'status' => $request->status,
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('sale')->tax() * 100,
                 'discount_amount' => Cart::instance('sale')->discount() * 100,
             ]);
@@ -184,7 +184,7 @@ class SaleController extends Controller
                 'status' => $request->status,
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('sale')->tax() * 100,
                 'discount_amount' => Cart::instance('sale')->discount() * 100,
             ]);

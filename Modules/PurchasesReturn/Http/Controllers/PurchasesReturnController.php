@@ -59,7 +59,7 @@ class PurchasesReturnController extends Controller
                 'status' => $request->status,
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('purchase_return')->tax() * 100,
                 'discount_amount' => Cart::instance('purchase_return')->discount() * 100,
             ]);
@@ -183,7 +183,7 @@ class PurchasesReturnController extends Controller
                 'status' => $request->status,
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
-                'note' => $request->note,
+                'barcode_scanner' => $request->barcode_scanner,
                 'tax_amount' => Cart::instance('purchase_return')->tax() * 100,
                 'discount_amount' => Cart::instance('purchase_return')->discount() * 100,
             ]);

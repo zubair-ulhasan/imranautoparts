@@ -30,7 +30,7 @@ class CreateSalesTable extends Migration
             $table->string('status');
             $table->string('payment_status');
             $table->string('payment_method');
-            $table->text('note')->nullable();
+            $table->sting('barcode_scanner')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers')->nullOnDelete();
             $table->timestamps();
         });

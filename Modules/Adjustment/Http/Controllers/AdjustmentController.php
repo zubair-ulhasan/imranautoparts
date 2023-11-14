@@ -35,7 +35,7 @@ class AdjustmentController extends Controller
         $request->validate([
             'reference'   => 'required|string|max:255',
             'date'        => 'required|date',
-            'note'        => 'nullable|string|max:1000',
+            'barcode_scanner'        => 'nullable|string|max:1000',
             'product_ids' => 'required',
             'quantities'  => 'required',
             'types'       => 'required'
@@ -44,7 +44,7 @@ class AdjustmentController extends Controller
         DB::transaction(function () use ($request) {
             $adjustment = Adjustment::create([
                 'date' => $request->date,
-                'note' => $request->note
+                'barcode_scanner' => $request->barcode_scanner
             ]);
 
             foreach ($request->product_ids as $key => $id) {
@@ -95,7 +95,7 @@ class AdjustmentController extends Controller
         $request->validate([
             'reference'   => 'required|string|max:255',
             'date'        => 'required|date',
-            'note'        => 'nullable|string|max:1000',
+            'barcode_scanner'        => 'nullable|string|max:1000',
             'product_ids' => 'required',
             'quantities'  => 'required',
             'types'       => 'required'
@@ -105,7 +105,7 @@ class AdjustmentController extends Controller
             $adjustment->update([
                 'reference' => $request->reference,
                 'date'      => $request->date,
-                'note'      => $request->note
+                'barcode_scanner'      => $request->barcode_scanner
             ]);
 
             foreach ($adjustment->adjustedProducts as $adjustedProduct) {

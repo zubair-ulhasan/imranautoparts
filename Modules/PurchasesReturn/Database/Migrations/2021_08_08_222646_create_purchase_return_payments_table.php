@@ -20,7 +20,7 @@ class CreatePurchaseReturnPaymentsTable extends Migration
             $table->date('date');
             $table->string('reference');
             $table->string('payment_method');
-            $table->text('note')->nullable();
+            $table->text('barcode_scanner')->nullable();
             $table->foreign('purchase_return_id')->references('id')->on('purchase_returns')->cascadeOnDelete();
             $table->timestamps();
         });

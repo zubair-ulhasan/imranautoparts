@@ -126,8 +126,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="product_note">Note</label>
-                                <textarea name="product_note" id="product_note" rows="4 " class="form-control">{{ $product->product_note }}</textarea>
+                                <label for="barcode_scanner">Barcode Scanner</label>
+                                <textarea name="barcode_scanner" id="barcode_scanner" rows="4 " class="form-control">{{ $product->barcode_scanner }}</textarea>
                             </div>
                         </div>
                     </div>

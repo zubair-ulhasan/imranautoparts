@@ -17,7 +17,7 @@ class CreateAdjustmentsTable extends Migration
             $table->id();
             $table->date('date');
             $table->string('reference');
-            $table->text('note')->nullable();
+            $table->string('barcode_scanner')->nullable();
             $table->timestamps();
         });
     }

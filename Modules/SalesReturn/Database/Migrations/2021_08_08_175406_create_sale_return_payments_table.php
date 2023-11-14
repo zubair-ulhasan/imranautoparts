@@ -20,7 +20,7 @@ class CreateSaleReturnPaymentsTable extends Migration
             $table->date('date');
             $table->string('reference');
             $table->string('payment_method');
-            $table->text('note')->nullable();
+            $table->string('barcode_scanner')->nullable();
             $table->foreign('sale_return_id')->references('id')->on('sale_returns')->cascadeOnDelete();
             $table->timestamps();
         });

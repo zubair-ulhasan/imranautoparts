@@ -20,7 +20,7 @@ class CreateSalePaymentsTable extends Migration
             $table->date('date');
             $table->string('reference');
             $table->string('payment_method');
-            $table->text('note')->nullable();
+            $table->string('barcode_scanner')->nullable();
             $table->foreign('sale_id')->references('id')->on('sales')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->integer('product_stock_alert');
             $table->integer('product_order_tax')->nullable();
             $table->tinyInteger('product_tax_type')->nullable();
-            $table->text('product_note')->nullable();
+            $table->string('barcode_scanner')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->restrictOnDelete();
             $table->timestamps();
         });

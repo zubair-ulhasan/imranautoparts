@@ -24,7 +24,7 @@ class UpdatePurchaseReturnRequest extends FormRequest
             'paid_amount' => 'required|numeric|max:' . $this->purchase_return->total_amount,
             'status' => 'required|string|max:255',
             'payment_method' => 'required|string|max:255',
-            'note' => 'nullable|string|max:1000'
+            'barcode_scanner' => 'nullable|string|max:1000'
         ];
     }
 

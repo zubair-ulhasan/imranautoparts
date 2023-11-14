@@ -132,12 +132,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="product_note">Note</label>
-                                <textarea name="product_note" id="product_note" rows="4 " class="form-control"></textarea>
+                                <label for="barcode_scanner">Barcode Scanner</label>
+                                <textarea name="barcode_scanner" id="barcode_scanner" rows="4 " class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-12">
                     <div class="card">
@@ -158,7 +159,7 @@
     </div>
 
     <!-- Create Category Modal -->
-    @include('product::includes.category-modal')
+  @include('product::includes.category-modal')
 @endsection
 
 @section('third_party_scripts')
@@ -166,6 +167,7 @@
 @endsection
 
 @push('page_scripts')
+
     <script>
         var uploadedDocumentMap = {}
         Dropzone.options.documentDropzone = {
@@ -212,7 +214,7 @@
                 }
                 @endif
             }
-        }
+        }                -->
     </script>
 
     <script src="{{ asset('js/jquery-mask-money.js') }}"></script>

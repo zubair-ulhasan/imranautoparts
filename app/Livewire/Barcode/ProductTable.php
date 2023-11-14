@@ -35,14 +35,15 @@ class ProductTable extends Component
             return session()->flash('message', 'Max quantity is 100 per barcode generation!');
         }
 
-        if (!is_numeric($product->product_code)) {
-            return session()->flash('message', 'Can not generate Barcode with this type of Product Code');
+        // Validate the product code to allow alphanumeric characters (letters and numbers).
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $product->product_code)) {
+            return session()->flash('message', 'Product Code can only contain letters and numbers.');
         }
 
         $this->barcodes = [];
 
         for ($i = 1; $i <= $quantity; $i++) {
-            $barcode = DNS1DFacade::getBarCodeSVG($product->product_code, $product->product_barcode_symbology,2 , 60, 'black', false);
+            $barcode = DNS1DFacade::getBarCodeSVG($product->product_code, $product->product_barcode_symbology, 2, 60, 'black', false);
             array_push($this->barcodes, $barcode);
         }
     }
@@ -53,10 +54,11 @@ class ProductTable extends Component
             'price' => $this->product->product_price,
             'name' => $this->product->product_name,
         ]);
-        return $pdf->stream('barcodes-'. $this->product->product_code .'.pdf');
+        return $pdf->stream('barcodes-' . $this->product->product_code . '.pdf');
     }
 
     public function updatedQuantity() {
         $this->barcodes = [];
     }
 }
+
