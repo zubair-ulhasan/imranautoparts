@@ -22,7 +22,7 @@
                                     <th>Supplier Name</th>
                                     <td>{{ $supplier->supplier_name }}</td>
                                 </tr>
-                                <tr>
+                                <!--tr>
                                     <th>Supplier Email</th>
                                     <td>{{ $supplier->supplier_email }}</td>
                                 </tr>
@@ -30,14 +30,14 @@
                                     <th>Supplier Phone</th>
                                     <td>{{ $supplier->supplier_phone }}</td>
                                 </tr>
-                                <tr>
+                                <!--tr>
                                     <th>City</th>
                                     <td>{{ $supplier->city }}</td>
                                 </tr>
                                 <tr>
                                     <th>Country</th>
                                     <td>{{ $supplier->country }}</td>
-                                </tr>
+                                </tr-->
                                 <tr>
                                     <th>Address</th>
                                     <td>{{ $supplier->address }}</td>
