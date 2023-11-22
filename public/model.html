@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+  <link rel="manifest" href="/assets/manifest.json" />
+  <link rel="preload" href=/assets/main.css as="style">
+  <link rel="stylesheet" href=/assets/main.css>
+  <link rel="canonical" href="https://scanapp.org"/>
+  <link rel="preload" href=/assets/app.v2.6.0.css as="style">
+  <link rel="stylesheet" href="/assets/app.v2.6.0.css">
+    <script defer src="app1.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body data-instant-allow-query-string data-instant-allow-external-links>
+<input type="button" onclick="initCamera()" value="start"/>
+<input type="text" id="valueScan" value="start"/>
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <div> <div class="scanapp-top-container">
+    <div class="scanapp-top-container-row">
+        <div id="desktop-scanapp-left-container" class="scanapp-l1-container">
+            <div id="scanapp-left-container-parent">
+                <div class="desktop-header-area">
+
+                    <div class="desktop-header-links">
+
+
+                    </div>
+                </div>
+                <div class="desktop-render-area">
+                    <div id="reader-container">
+                        <div id="reader"></div>
+                    </div>
+                </div>
+
+                    <div class="desktop-footer-area-bottom-panel">
+                        <div class="desktop-footer-area-bottom-panel-col">
+
+                        </div>
+                        <div class="desktop-footer-area-bottom-panel-col">
+
+                        </div>
+                        <div class="desktop-footer-area-bottom-panel-col">
+
+                        </div>
+                        <div class="desktop-footer-area-bottom-panel-col">
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="desktop-right-container-panel desktop-right-container-result-panel">
+                <div class="desktop-result-panel-header">
+                    <div class="desktop-result-panel-header-title">
+
+                    </div>
+                    <div class="desktop-result-panel-header-actions">
+                        <!-- TODO: Make this dynamic -- expand less for phone is opposite -->
+                        <div class="action-icons" id="result-panel-minimize-action">
+                            <img src="./assets/images/icons/expand_less.svg" alt="minimize" width="48px" height="48px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-result-panel-body" id="result-panel-body-id">
+                    <div class="desktop-result-panel-body-placeholder" id="result-panel-placeholder">
+
+                    </div>
+                    <div class="desktop-result-panel-body-actual mobile-popup-banner" id="result-panel-container">
+                        <div>
+                            <div class="header">
+                                New <span id="scan-result-code-type">{code}</span> detected!
+                            </div>
+                            <div class="section">
+                                <div class="image" id="scan-result-image"></div>
+                                <div class="data">
+                                    <table id="result_table">
+                                        <tr>
+                                            <td colspan="2">
+                                                <div>
+                                                    <div class="badge">
+                                                        <div class="badge-icon">
+                                                            <span><b>Type</b></span>
+                                                        </div>
+                                                        <div class="badge-text">
+                                                            <span id="scan-result-badge-body">{type}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="scan-result-parsed">{parsed result here}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Actions</td>
+                                            <td>
+                                                <img class="action_image" id="action-share" alt="Share the result"
+                                                        src="./assets/svg/share-svgrepo-com.svg" width="20px" height="20px">
+                                                <img class="action_image"
+                                                    width="20px" height="20px"
+                                                    id="action-copy"
+                                                    alt="Copy the result text"
+                                                    src="./assets/svg/copy-svgrepo-com.svg">
+                                                <img class="action_image" id="action-payment" alt="Make a payment"
+                                                    src="./assets/svg/coin-svgrepo-com.svg" style="display: none"
+                                                    width="20px" height="20px">
+                                                <img class="action_image" id="action-url"  alt="Open the URL"
+                                                    src="./assets/svg/link2.svg" style="display: none;"
+                                                    width="20px" height="20px">
+                                                <img class="action_image" id="action-download"  alt="Download text"
+                                                    src="./assets/images/icons/download.svg"
+                                                    width="20px" height="20px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Text</td>
+                                            <td style="word-break: break-word">
+                                                <div id="scan-result-text">{text result here}</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="body-footer" class="footer">
+                            <div id="scan-quick-action">
+                                <div id="scan-quick-action-header">
+                                    <span id="scan-quick-action-header-icon">
+                                        <img alt="Open the URL" src="./assets/svg/link2.svg" width="20px" height="20px" />
+                                    </span>
+                                    <span>
+                                        Click to open <span id="scan-quick-action-header-text">scanapp.org/blog/somthing/or/other</span>
+                                    </span>
+                                </div>
+                                <div id="scan-quick-action-body">
+                                    <div id="scan-quick-action-body-title"></div>
+                                    <div id="scan-quick-action-body-description"></div>
+                                </div>
+                            </div>
+
+                            <button id="scan-result-close" class="scanapp-button">
+                                Close and scan another
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO: Implement history feature and enable this UI. -->
+            <div class="desktop-right-container-panel desktop-right-container-history-panel hidden-initially">
+                <div class="desktop-result-panel-header">
+                    <div class="desktop-result-panel-header-title">
+                        <!-- <div class="desktop-result-panel-header-title-icon">
+                            <img src="./assets/images/icons/history.svg" alt="history" height="36px" />
+                        </div> -->
+                        <div class="desktop-result-panel-header-title-text">Scan History</div>
+                    </div>
+                    <div class="desktop-result-panel-header-actions">
+                        <div class="action-icons">
+                            <img src="./assets/images/icons/delete.svg" alt="clear" height="36px" />
+                        </div>
+                        <div class="action-icons" id="history-panel-minimize-action">
+                            <img src="./assets/images/icons/expand_less.svg" alt="minimize" width="48px" height="48px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-result-panel-body desktop-result-panel-scan-history" id="history-panel-body-id">
+                    <!-- Migrate to JS based creation -->
+                    <div class="desktop-result-panel-scan-history-placeholder">
+                        No scan history
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile specific containers-->
+<div id="mobile-popup-scrim"></div>
+ </div>
+  </div>
+
+</div>
+</body>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- TODO: understand impact of defer on gtag manager -->
+<script defer src="https://www.googletagmanager.com/gtag/js?sid=G-2KZEP7DPYH1"></script>
+<script defer>
+ // window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  //gtag('js', new Date());
+  // gtag('set', 'transport', 'beacon');
+ // gtag('config', 'G-2KZEP7DPYH');
+</script>
+
+</html>
