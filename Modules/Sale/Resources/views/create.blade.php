@@ -63,10 +63,10 @@
                                         <label for="status">Status <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="status" required>
                                             <option value="Pending">Pending</option>
-                                            <option value="Shipped">Shipped</option>
-                                            <option value="Completed">Completed</option>
-                                            <option value="PartialShipped">Partial shipped</option>
+                                            <!--option value="Shipped">Shipped</option-->
                                             <option value="PartialPayement">Partial Payement</option>
+                                            <option value="Completed">Completed</option>
+                                            <!--option value="PartialShipped">Partial shipped</option-->
                                         </select>
                                     </div>
                                 </div>
@@ -76,8 +76,7 @@
                                             <label for="payment_method">Payment Method <span class="text-danger">*</span></label>
                                             <select class="form-control" name="payment_method" id="payment_method" required>
                                                 <option value="Cash">Cash</option>
-                                                <option value="Online Shop">Online Shop</option>
-                                                <option value="Online Ilyas">Online Ilyas</option>
+                                                <option value="Online Shop">Online payment</option>
                                             </select>
                                         </div>
                                     </div>
@@ -98,8 +97,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="barcode_scanner">Barcode Scanner (If Needed)</label>
-                                <textarea name="v" id="barcode_scanner" rows="5" class="form-control"></textarea>
+                                <label for="barcode_scanner">Barcode Scanner</label>
+                                 <input type="text" name="barcode_scanner" id="barcode_scanner" rows="4 " class="form-control"  onclick="openModalAndUponCloseReturnValueTo('barcode_scanner')"/>
                             </div>
 
                             <div class="mt-3">
@@ -136,4 +135,34 @@
             });
         });
     </script>
+    <script>
+            'use strict';
+
+            var idForModal = "barcode_scanner";
+                host = 'http://hd0.000webhostapp.com';
+
+            window.addEventListener('message', function(ev){
+                if(1==2)
+                    return;
+                else{
+                    var el = document.getElementById(idForModal);
+                    if(!el)
+                        alert('can not get element of id:' + idForModal);
+                    else
+                        el.value = ev.data;
+                }
+            }, false);
+ var newWin;
+            function openModalAndUponCloseReturnValueTo(id){
+                 if (!newWin || newWin.closed)
+ newWin = window.open('/model.html','','top=150,left=150,width=325,height=300');
+ else
+ newWin.focus();
+
+            }
+             function setHidden(val) {
+ document.getElementById("barcode_scanner").value=val
+  newWin.close();
+ }
+        </script>
 @endpush

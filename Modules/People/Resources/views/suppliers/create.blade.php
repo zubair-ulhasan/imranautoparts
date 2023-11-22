@@ -34,12 +34,12 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="supplier_email">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" name="supplier_email" required>
+                                        <input type="hidden" class="form-control" name="supplier_email" val="welcome123@gmail.com" required>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-row">
+                            <!---div class="form-row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="supplier_phone">Phone <span class="text-danger">*</span></label>
@@ -58,7 +58,7 @@
                                         <input type="text" class="form-control" name="country" required>
                                     </div>
                                 </div>
-                            </div>
+                            </div-->
 
                             <div class="form-row">
                                 <div class="col-lg-12">
