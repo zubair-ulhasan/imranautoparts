@@ -18,7 +18,7 @@ class CreateSaleReturnsTable extends Migration
             $table->date('date');
             $table->string('reference');
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->string('customer_name');
+            $table->string('customer_phone');
             $table->integer('tax_percentage')->default(0);
             $table->integer('tax_amount')->default(0);
             $table->integer('discount_percentage')->default(0);

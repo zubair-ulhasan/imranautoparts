@@ -39,7 +39,7 @@
                                             <label for="customer_id">Customer <span class="text-danger">*</span></label>
                                             <select class="form-control" name="customer_id" id="customer_id" required>
                                                 @foreach(\Modules\People\Entities\Customer::all() as $customer)
-                                                    <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
+                                                    <option value="{{ $customer->id }}">{{ $customer->customer_phone }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -30,21 +30,24 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="reference">Reference <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="reference" required readonly value="SL">
+                                        <input type="text" class="form-control" name="reference" required value="Direct">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
-                                            <label for="customer_id">Customer <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="customer_id" id="customer_id" required>
-                                                @foreach(\Modules\People\Entities\Customer::all() as $customer)
-                                                    <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
-                                                @endforeach
-                                            </select>
+                                             <label for="customer_phone">Customer Phone<span class="text-danger">*</span></label>
+                                             <input type="text" class="form-control" name="customer_id" id="customer_phone"  pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required>
+
+                                                <!--select class="form-control" name="customer_id" id="customer_id" required>
+                                                    @foreach(\Modules\People\Entities\Customer::all() as $customer)
+                                                        <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
+                                                    @endforeach
+                                                </select-->
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-4">
                                     <div class="from-group">
                                         <div class="form-group">
@@ -62,7 +65,7 @@
                                     <div class="form-group">
                                         <label for="status">Status <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="status" required>
-                                            <option value="Pending">Pending</option>
+                                            <option value="Pending">Payment Pending</option>
                                             <!--option value="Shipped">Shipped</option-->
                                             <option value="PartialPayement">Partial Payement</option>
                                             <option value="Completed">Completed</option>
@@ -83,7 +86,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="paid_amount">Amount Received <span class="text-danger">*</span></label>
+                                        <label for="paid_amount">Amount Received<span class="text-danger">*</span></label>
                                         <div class="input-group">
                                             <input id="paid_amount" type="text" class="form-control" name="paid_amount" required>
                                             <div class="input-group-append">
@@ -136,33 +139,62 @@
         });
     </script>
     <script>
-            'use strict';
+    'use strict';
 
-            var idForModal = "barcode_scanner";
-                host = 'http://hd0.000webhostapp.com';
+    var idForModal = "barcode_scanner";
+    host = 'http://hd0.000webhostapp.com';
 
-            window.addEventListener('message', function(ev){
-                if(1==2)
-                    return;
-                else{
-                    var el = document.getElementById(idForModal);
-                    if(!el)
-                        alert('can not get element of id:' + idForModal);
-                    else
-                        el.value = ev.data;
-                }
-            }, false);
- var newWin;
-            function openModalAndUponCloseReturnValueTo(id){
-                 if (!newWin || newWin.closed)
- newWin = window.open('/model.html','','top=150,left=150,width=325,height=300');
- else
- newWin.focus();
-
+    window.addEventListener('message', function (ev) {
+        if (1 == 2)
+            return;
+        else {
+            var el = document.getElementById(idForModal);
+            if (!el)
+                alert('can not get element of id:' + idForModal);
+            else {
+                // Call a function to validate the barcode against the database
+                validateBarcode(ev.data);
             }
-             function setHidden(val) {
- document.getElementById("barcode_scanner").value=val
-  newWin.close();
- }
-        </script>
+        }
+    }, false);
+
+    var newWin;
+
+    function openModalAndUponCloseReturnValueTo(id) {
+        if (!newWin || newWin.closed)
+            newWin = window.open('/model.html', '', 'top=150,left=150,width=325,height=300');
+        else
+            newWin.focus();
+    }
+
+    function setHidden(val) {
+        document.getElementById("barcode_scanner").value = val;
+        newWin.close();
+    }
+
+    // Function to validate the barcode against the database
+    function validateBarcode(barcode) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', host + '/validateBarcode.php?barcode=' + barcode, true);
+
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                // Parse the response, assuming it's in JSON format
+                var response = JSON.parse(xhr.responseText);
+
+                if (response.isValid) {
+                    setHidden(response.barcode);
+                } else {
+                    alert('Invalid barcode');
+                }
+            } else {
+                // Handle error
+                alert('Error validating barcode');
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+
 @endpush

@@ -32,36 +32,7 @@
                                         <input type="text" class="form-control" name="supplier_name" required value="{{ $supplier->supplier_name }}">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="supplier_email">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" name="supplier_email" required value="{{ $supplier->supplier_email }}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="supplier_phone">Phone <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="supplier_phone" required value="{{ $supplier->supplier_phone }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="city">City <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="city" required value="{{ $supplier->city }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="country">Country <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="country" required value="{{ $supplier->country }}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
+                                <div class="form-row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="address">Address <span class="text-danger">*</span></label>
@@ -69,6 +40,36 @@
                                     </div>
                                 </div>
                             </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="supplier_email"><span class="text-danger"></span></label>
+                                        <input type="hidden" class="form-control" name="supplier_email" required value="{{ $supplier->supplier_email }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="supplier_phone"><span class="text-danger"></span></label>
+                                        <input type="hidden" class="form-control" name="supplier_phone" required value="{{ $supplier->supplier_phone }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="city"><span class="text-danger"></span></label>
+                                        <input type="hidden" class="form-control" name="city" required value="{{ $supplier->city }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="country"><span class="text-danger"></span></label>
+                                        <input type="hidden" class="form-control" name="country" required value="{{ $supplier->country }}">
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

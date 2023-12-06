@@ -14,25 +14,51 @@ use Modules\Sale\Entities\SaleDetails;
 use Modules\Sale\Entities\SalePayment;
 use Modules\Sale\Http\Requests\StoreSaleRequest;
 use Modules\Sale\Http\Requests\UpdateSaleRequest;
+use Illuminate\Support\Facades\Log;
+
 
 class SaleController extends Controller
 {
 
     public function index(SalesDataTable $dataTable) {
         abort_if(Gate::denies('access_sales'), 403);
+       # dd($dataTable);
+        $b =  $dataTable->render('sale::index');
 
-        return $dataTable->render('sale::index');
+        return $b;
     }
+    public function getIDFromPhone($customer_phone){
+            $existingCustomer = Customer::where('customer_phone', $customer_phone)->first();
+            if ($existingCustomer) {
+            return ($existingCustomer->id) ;
+            }
+            return null;
+    }
+     public function customerIDFromPhone($customer_phone){
+$existingCustomer = $this->getIDFromPhone($customer_phone);
+if($existingCustomer!=null) {
+    return $existingCustomer;
+} else{
+       Customer::create([
+            'customer_name'  => 'zubair',
+            'customer_phone' => $customer_phone,
+            'customer_email' => 'dummy@a.com',
+            'city'           => 'hyd',
+            'country'        => 'in',
+            'address'        => 'add'
+        ]);
+        $existingCustomer =  $this->getIDFromPhone($customer_phone);
+        if($existingCustomer!=null  ) return($existingCustomer);
+
+}    }
+
 
 
     public function create() {
         abort_if(Gate::denies('create_sales'), 403);
-
         Cart::instance('sale')->destroy();
-
         return view('sale::create');
     }
-
 
     public function store(StoreSaleRequest $request) {
         DB::transaction(function () use ($request) {
@@ -45,11 +71,12 @@ class SaleController extends Controller
             } else {
                 $payment_status = 'Paid';
             }
+           $cid= $this->customerIDFromPhone($request->customer_id);
 
             $sale = Sale::create([
                 'date' => $request->date,
-                'customer_id' => $request->customer_id,
-                'customer_name' => Customer::findOrFail($request->customer_id)->customer_name,
+                'customer_id' => $cid,//call (customerIDFromPhone)this function here
+                'customer_name' => Customer::findOrFail($cid)->customer_name,
                 'tax_percentage' => $request->tax_percentage,
                 'discount_percentage' => $request->discount_percentage,
                 'shipping_amount' => $request->shipping_amount * 100,
@@ -63,6 +90,7 @@ class SaleController extends Controller
                 'tax_amount' => Cart::instance('sale')->tax() * 100,
                 'discount_amount' => Cart::instance('sale')->discount() * 100,
             ]);
+
 
             foreach (Cart::instance('sale')->content() as $cart_item) {
                 SaleDetails::create([
@@ -116,6 +144,7 @@ class SaleController extends Controller
 
 
     public function edit(Sale $sale) {
+
         abort_if(Gate::denies('edit_sales'), 403);
 
         $sale_details = $sale->saleDetails;
@@ -148,6 +177,7 @@ class SaleController extends Controller
 
 
     public function update(UpdateSaleRequest $request, Sale $sale) {
+
         DB::transaction(function () use ($request, $sale) {
 
             $due_amount = $request->total_amount - $request->paid_amount;
@@ -169,12 +199,12 @@ class SaleController extends Controller
                 }
                 $sale_detail->delete();
             }
-
+         $cid= $this->customerIDFromPhone($request->customer_id);
             $sale->update([
                 'date' => $request->date,
                 'reference' => $request->reference,
-                'customer_id' => $request->customer_id,
-                'customer_name' => Customer::findOrFail($request->customer_id)->customer_name,
+                'customer_id' => $cid,//call (customerIDFromPhone)this function here
+                'customer_name' => Customer::findOrFail($cid)->customer_name,
                 'tax_percentage' => $request->tax_percentage,
                 'discount_percentage' => $request->discount_percentage,
                 'shipping_amount' => $request->shipping_amount * 100,
