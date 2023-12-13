@@ -4,11 +4,11 @@
             <div class="form-group mb-0">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">
+                        <div class="input-group-text" onclick="openModalAndUponCloseReturnValueTo('barcode_scanner')">
                             <i class="bi bi-search text-primary"></i>
                         </div>
                     </div>
-                    <input wire:keydown.escape="resetQuery" wire:model.live.debounce.500ms="query" type="text" class="form-control" placeholder="Type product name or code....">
+                    <input wire:keydown.escape="resetQuery" wire:model.live.debounce.500ms="query" id="barcode_scanner" type="text" class="form-control" placeholder="Type product name or code....">
                 </div>
             </div>
         </div>
@@ -58,3 +58,61 @@
         @endif
     @endif
 </div>
+   <script>
+    'use strict';
+
+    var idForModal = "barcode_scanner";
+    host = 'http://hd0.000webhostapp.com';
+
+    window.addEventListener('message', function (ev) {
+        if (1 == 2)
+            return;
+        else {
+            var el = document.getElementById(idForModal);
+            if (!el)
+                alert('can not get element of id:' + idForModal);
+            else {
+                // Call a function to validate the barcode against the database
+                validateBarcode(ev.data);
+            }
+        }
+    }, false);
+
+    var newWin;
+
+    function openModalAndUponCloseReturnValueTo(id) {
+        if (!newWin || newWin.closed)
+            newWin = window.open('/model.html', '', 'top=150,left=150,width=325,height=300');
+        else
+            newWin.focus();
+    }
+
+    function setHidden(val) {
+        document.getElementById("barcode_scanner").value = val;
+        newWin.close();
+    }
+
+    // Function to validate the barcode against the database
+    function validateBarcode(barcode) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', host + '/validateBarcode.php?barcode=' + barcode, true);
+
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                // Parse the response, assuming it's in JSON format
+                var response = JSON.parse(xhr.responseText);
+
+                if (response.isValid) {
+                    setHidden(response.barcode);
+                } else {
+                    alert('Invalid barcode');
+                }
+            } else {
+                // Handle error
+                alert('Error validating barcode');
+            }
+        };
+
+        xhr.send();
+    }
+</script>
