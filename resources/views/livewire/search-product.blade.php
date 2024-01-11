@@ -4,11 +4,11 @@
             <div class="form-group mb-0">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text" onclick="openModalAndUponCloseReturnValueTo('barcode_scanner')">
+                        <div class="input-group-text" wire:model.live.debounce.500ms="" onclick="openModalAndUponCloseReturnValueTo('barcode_scanner');">
                             <i class="bi bi-search text-primary"></i>
                         </div>
                     </div>
-                    <input wire:keydown.escape="resetQuery" wire:model.live.debounce.500ms="query" id="barcode_scanner" type="text" class="form-control" placeholder="Type product name or code....">
+                    <input  wire:keydown.escape="resetQuery" wire:model.live.debounce.500ms="query" id="barcode_scanner" type="text" class="form-control" placeholder="Type product name or code....">
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         @foreach($search_results as $result)
                             <li class="list-group-item list-group-item-action">
                                 <a wire:click="resetQuery" wire:click.prevent="selectProduct({{ $result }})" href="#">
-                                    {{ $result->product_name }} | {{ $result->product_code }}
+                                    {{ $result->product_name }} | {{ $result->product_code }} | {{ $result->barcode_scanner}}
                                 </a>
                             </li>
                         @endforeach
@@ -61,22 +61,6 @@
    <script>
     'use strict';
 
-    var idForModal = "barcode_scanner";
-    host = 'http://hd0.000webhostapp.com';
-
-    window.addEventListener('message', function (ev) {
-        if (1 == 2)
-            return;
-        else {
-            var el = document.getElementById(idForModal);
-            if (!el)
-                alert('can not get element of id:' + idForModal);
-            else {
-                // Call a function to validate the barcode against the database
-                validateBarcode(ev.data);
-            }
-        }
-    }, false);
 
     var newWin;
 
@@ -90,6 +74,7 @@
     function setHidden(val) {
         document.getElementById("barcode_scanner").value = val;
         newWin.close();
+         document.getElementById("barcode_scanner").focus();
     }
 
     // Function to validate the barcode against the database
@@ -116,3 +101,6 @@
         xhr.send();
     }
 </script>
+@push('page_scripts')
+
+@endpush

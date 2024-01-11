@@ -32,7 +32,12 @@ class SalesDataTable extends DataTable
             })
             ->addColumn('action', function ($data) {
                 return view('sale::partials.actions', compact('data'));
-            });
+            })
+            ->addColumn('customer_phone', function ($data) {
+                 return $data->customer_phone;
+});
+
+
     }
 
     public function query(Sale $model) {
@@ -65,7 +70,7 @@ class SalesDataTable extends DataTable
             Column::make('reference')
                 ->className('text-center align-middle'),
 
-            Column::make('customer_name')
+            Column::make('customer_phone')
                 ->title('Customer')
                 ->className('text-center align-middle'),
 

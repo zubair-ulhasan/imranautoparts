@@ -10286,7 +10286,7 @@ function initCamera(){
              }(),
              R = function() {
                  function r(t) {
-                     this.placeHolderContainer = document.getElementById("result-panel-placeholder"), this.parentContainer = document.getElementById("result-panel-container"), this.scanResultCodeType = document.getElementById("scan-result-code-type"), this.scanResultImage = document.getElementById("scan-result-image"), this.scanResultText = document.getElementById("scan-result-text")
+                     this.placeHolderContainer = document.getElementById("result-panel-placeholder"), this.parentContainer = document.getElementById("result-panel-container"), this.scanResultCodeType = document.getElementById("scan-result-code-type"), this.scanResultImage = document.getElementById("scan-result-image"), this.scanResultText = document.getElementById("scan-result-text").focus()
 
                       this.scanResultBadgeBody = document.getElementById("scan-result-badge-body"), this.scanResultParsed = document.getElementById("scan-result-parsed"), this.actionShareImage = document.getElementById("action-share"), this.actionCopyImage = document.getElementById("action-copy"), this.actionPaymentImage = document.getElementById("action-payment"), this.actionUrlImage = document.getElementById("action-url"), this.actionDownload = document.getElementById("action-download"), this.scanResultClose = document.getElementById("scan-result-close"), this.scanResultFooter = document.getElementById("body-footer"), this.mobileNavBarQrIcon = document.getElementById("navbar-menu-icon-qr"), this.quickActionHandler = N.create(), this.isFormFactorMobile = !1, this.isFormFactorMobile = t, this.renderInternal(), this.addListeners()
                  }

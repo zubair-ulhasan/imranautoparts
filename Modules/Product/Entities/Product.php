@@ -34,18 +34,18 @@ class Product extends Model implements HasMedia
     }
 
     public function setProductCostAttribute($value) {
-        $this->attributes['product_cost'] = ($value * 100);
+        $this->attributes['product_cost'] = ($value);
     }
 
     public function getProductCostAttribute($value) {
-        return ($value / 100);
+        return ($value);
     }
 
     public function setProductPriceAttribute($value) {
-        $this->attributes['product_price'] = ($value * 100);
+        $this->attributes['product_price'] = ($value);
     }
 
     public function getProductPriceAttribute($value) {
-        return ($value / 100);
+        return ($value);
     }
 }

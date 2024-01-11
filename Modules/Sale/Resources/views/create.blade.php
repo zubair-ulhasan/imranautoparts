@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@livewireScripts
 @section('title', 'Create Sale')
 
 @section('breadcrumb')
@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid mb-4">
+    <div class="container-fluidmb-4">
         <div class="row">
             <div class="col-12">
                 <livewire:search-product/>
@@ -65,11 +65,11 @@
                                     <div class="form-group">
                                         <label for="status">Status <span class="text-danger">*</span></label>
                                         <select class="form-control" name="status" id="status" required>
-                                            <option value="Pending">Payment Pending</option>
-                                            <!--option value="Shipped">Shipped</option-->
-                                            <option value="PartialPayement">Partial Payement</option>
                                             <option value="Completed">Completed</option>
-                                            <!--option value="PartialShipped">Partial shipped</option-->
+                                            <!--option value="Pending">Payment Pending</option>
+                                            <option value="Shipped">Shipped</option>
+                                            <option value="PartialPayement">Partial Payement</option>
+                                            <option value="PartialShipped">Partial shipped</option-->
                                         </select>
                                     </div>
                                 </div>
@@ -138,12 +138,11 @@
             });
         });
     </script>
-    <script>
+    <!--script>
     'use strict';
 
     var idForModal = "barcode_scanner";
     host = 'http://hd0.000webhostapp.com';
-
     window.addEventListener('message', function (ev) {
         if (1 == 2)
             return;
@@ -195,6 +194,7 @@
 
         xhr.send();
     }
-</script>
+</script-->
+
 
 @endpush

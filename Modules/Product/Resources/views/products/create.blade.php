@@ -122,7 +122,7 @@
                                     <div class="form-group">
                                         <label for="product_unit">Unit <i class="bi bi-question-circle-fill text-info" data-toggle="tooltip" data-placement="top" title="This short text will be placed after Product Quantity."></i> <span class="text-danger">*</span></label>
                                         <select class="form-control" name="product_unit" id="product_unit">
-                                            <option value="" selected >Select Unit</option>
+                                            <!--option value="" selected >Select Unit</option-->
                                             @foreach(\Modules\Setting\Entities\Unit::all() as $unit)
                                                 <option value="{{ $unit->short_name }}">{{ $unit->name . ' | ' . $unit->short_name }}</option>
                                             @endforeach

@@ -38,7 +38,7 @@
 
                             <div class="col-sm-4 mb-3 mb-md-0">
                                 <h5 class="mb-2 border-bottom pb-2">Customer Info:</h5>
-                                <div><strong>{{ $customer->customer_name }}</strong></div>
+                                <div><strong>{{ $customer->customer_phone }}</strong></div>
                                 <div>{{ $customer->address }}</div>
                                 <div>Email: {{ $customer->customer_email }}</div>
                                 <div>Phone: {{ $customer->customer_phone }}</div>

@@ -77,6 +77,7 @@ if($existingCustomer!=null) {
                 'date' => $request->date,
                 'customer_id' => $cid,//call (customerIDFromPhone)this function here
                 'customer_name' => Customer::findOrFail($cid)->customer_name,
+                'customer_phone' => Customer::findOrFail($cid)->customer_phone,
                 'tax_percentage' => $request->tax_percentage,
                 'discount_percentage' => $request->discount_percentage,
                 'shipping_amount' => $request->shipping_amount * 100,
@@ -138,7 +139,8 @@ if($existingCustomer!=null) {
         abort_if(Gate::denies('show_sales'), 403);
 
         $customer = Customer::findOrFail($sale->customer_id);
-
+        // Update the customer_phone in the sales table
+        $sale->update(['customer_phone' => $customer->customer_phone]);
         return view('sale::show', compact('sale', 'customer'));
     }
 
