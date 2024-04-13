@@ -8,7 +8,7 @@
     <title>Login | {{ config('app.name') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="images/favicon.png">
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
@@ -31,7 +31,7 @@
             @endif
             <div class="card p-4 border-0 shadow-sm">
                 <div class="card-body">
-                    <form id="login" method="post" action="{{ url('/login') }}">
+                    <form id="login" method="post" action="/login">
                         @csrf
                         <h1>Login</h1>
                         <p class="text-muted">Sign In to your account</p>
@@ -83,9 +83,7 @@
             </div>
 
             <p class="text-center mt-5 lead">
-                Developed By
-                <a href="https://fahimanzam.netlify.app" class="font-weight-bold text-primary">Fahim Anzam Dip</a>
-            </p>
+                 </p>
         </div>
     </div>
 </div>

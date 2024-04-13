@@ -125,5 +125,5 @@
 @endsection
 
 @push('page_scripts')
-    @vite('resources/js/chart-config.js')
+
 @endpush

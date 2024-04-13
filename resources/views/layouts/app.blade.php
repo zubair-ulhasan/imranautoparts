@@ -7,7 +7,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="images/favicon.png">
 
     @include('includes.main-css')
 </head>
