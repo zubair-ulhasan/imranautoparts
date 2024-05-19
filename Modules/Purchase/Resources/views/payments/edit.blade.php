@@ -92,7 +92,7 @@
 @endsection
 
 @push('page_scripts')
-    <script src="{{ asset('js/jquery-mask-money.js') }}"></script>
+    <script src="/js/jquery-mask-money.js"></script>
     <script>
         $(document).ready(function () {
             $('#amount').maskMoney({
