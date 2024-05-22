@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@livewireScripts
+
 @section('title', 'Create Sale')
 
 @section('breadcrumb')

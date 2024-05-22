@@ -45,6 +45,7 @@ class PosController extends Controller
                 'reference' => 'PSL',
                 'customer_id' => $request->customer_id,
                 #'customer_name' => Customer::findOrFail($request->customer_id)->customer_name,
+                'customer_name' =>'zubair',
                 'customer_phone' => Customer::findOrFail($request->customer_id)->customer_phone,
                 'tax_percentage' => $request->tax_percentage,
                 'discount_percentage' => $request->discount_percentage,
