@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
         $pdf = \PDF::loadView('salesreturn::print', [
             'sale_return' => $saleReturn,
             'customer' => $customer,
-        ])->setPaper('a4');
+        ])->setPaper('a8');
 
         return $pdf->stream('sale-return-'. $saleReturn->reference .'.pdf');
     })->name('sale-returns.pdf');

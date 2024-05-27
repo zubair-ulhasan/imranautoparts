@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         $pdf = \PDF::loadView('sale::print', [
             'sale' => $sale,
             'customer' => $customer,
-        ])->setPaper('a4');
+        ])->setPaper('a8');
 
         return $pdf->stream('sale-'. $sale->reference .'.pdf');
     })->name('sales.pdf');
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         $pdf = \PDF::loadView('sale::print-pos', [
             'sale' => $sale,
-        ])->setPaper('a7')
+        ])->setPaper('a8')
             ->setOption('margin-top', 8)
             ->setOption('margin-bottom', 8)
             ->setOption('margin-left', 5)

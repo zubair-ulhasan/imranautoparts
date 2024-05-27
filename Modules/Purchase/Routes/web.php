@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
         $pdf = \PDF::loadView('purchase::print', [
             'purchase' => $purchase,
             'supplier' => $supplier,
-        ])->setPaper('a4');
+        ])->setPaper('a8');
 
         return $pdf->stream('purchase-'. $purchase->reference .'.pdf');
     })->name('purchases.pdf');

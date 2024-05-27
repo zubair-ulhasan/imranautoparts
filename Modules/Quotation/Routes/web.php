@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
         $pdf = \PDF::loadView('quotation::print', [
             'quotation' => $quotation,
             'customer' => $customer,
-        ])->setPaper('a4');
+        ])->setPaper('a8');
 
         return $pdf->stream('quotation-'. $quotation->reference .'.pdf');
     })->name('quotations.pdf');

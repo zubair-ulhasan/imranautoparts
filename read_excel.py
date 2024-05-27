@@ -9,10 +9,10 @@ def write_to_mysql(df):
 
 
     # Replace these with your MySQL connection details
-    mysql_host = '127.0.0.1'
+    mysql_host = '65.109.11.178'
     mysql_user = 'zubair'
     mysql_password = 'Welcome@321'
-    mysql_db = 'triangle_pos'
+    mysql_db = 'imran'
 
     # Create a MySQL connection
     conn = mysql.connector.connect(
